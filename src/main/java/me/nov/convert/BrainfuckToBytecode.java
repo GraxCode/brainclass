@@ -51,8 +51,7 @@ public class BrainfuckToBytecode implements Opcodes {
     LinkedList<Label> jumpStarts = new LinkedList<>();
     LinkedList<Label> jumpEnds = new LinkedList<>();
 
-    int c = 0;
-
+    int c;
     int sequence = 0;
     char lastChar = '\0';
     while ((c = buffer.read()) != -1) {
@@ -74,7 +73,6 @@ public class BrainfuckToBytecode implements Opcodes {
     }
 
     mv.visitInsn(RETURN);
-    mv.visitMaxs(4, 3);
     mv.visitEnd();
     cw.visitEnd();
     Files.write(new File(brainfuckName + ".class").toPath(), cw.toByteArray());
