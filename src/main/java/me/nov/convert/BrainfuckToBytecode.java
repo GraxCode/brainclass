@@ -73,6 +73,7 @@ public class BrainfuckToBytecode implements Opcodes {
     }
 
     mv.visitInsn(RETURN);
+    mv.visitMaxs(256, 3);
     mv.visitEnd();
     cw.visitEnd();
     Files.write(new File(brainfuckName + ".class").toPath(), cw.toByteArray());
